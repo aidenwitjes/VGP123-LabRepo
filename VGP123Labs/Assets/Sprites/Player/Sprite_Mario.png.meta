@@ -110,11 +110,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sprite_Mario_0
+      name: Idle
       rect:
         serializedVersion: 2
         x: 3
-        y: 78
+        y: 79
         width: 15
         height: 28
       alignment: 7
@@ -131,7 +131,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Mario_1
+      name: Mario Walk 1
       rect:
         serializedVersion: 2
         x: 20
@@ -152,7 +152,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Mario_2
+      name: Mario Walk 2
       rect:
         serializedVersion: 2
         x: 37
@@ -173,7 +173,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Mario_3
+      name: Mario Throw 1
       rect:
         serializedVersion: 2
         x: 54
@@ -236,7 +236,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Mario_6
+      name: Mario Throw 2
       rect:
         serializedVersion: 2
         x: 107
@@ -278,10 +278,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Mario_8
+      name: Mario Jump
       rect:
         serializedVersion: 2
-        x: 144
+        x: 145
         y: 76
         width: 16
         height: 31
@@ -320,7 +320,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Mario_10
+      name: Mario Jump Attack 1
       rect:
         serializedVersion: 2
         x: 185
@@ -383,7 +383,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Mario_13
+      name: Mario Jump Attack 4
       rect:
         serializedVersion: 2
         x: 241
@@ -404,7 +404,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Mario_14
+      name: Mario Jump Attack 3
       rect:
         serializedVersion: 2
         x: 269
@@ -446,7 +446,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Mario_16
+      name: Mario Jump Attack 2
       rect:
         serializedVersion: 2
         x: 306
@@ -971,7 +971,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Mario_41
+      name: Mario Throw 7
       rect:
         serializedVersion: 2
         x: 408
@@ -992,7 +992,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Mario_42
+      name: Mario Throw 6
       rect:
         serializedVersion: 2
         x: 428
@@ -1097,7 +1097,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Mario_47
+      name: Mario Throw 3
       rect:
         serializedVersion: 2
         x: 61
@@ -1118,7 +1118,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Mario_48
+      name: Mario Throw 4
       rect:
         serializedVersion: 2
         x: 79
@@ -1139,7 +1139,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Mario_49
+      name: Mario Throw 5
       rect:
         serializedVersion: 2
         x: 97
@@ -1401,19 +1401,27 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Sprite_Mario_0: -17958594
-      Sprite_Mario_1: 1815555874
-      Sprite_Mario_10: -1469426889
+      Idle: -17958594
+      Mario Jump: -974838984
+      Mario Jump Attack 1: -1469426889
+      Mario Jump Attack 2: 2028708976
+      Mario Jump Attack 3: 11479705
+      Mario Jump Attack 4: 1432417164
+      Mario Throw 1: -701477462
+      Mario Throw 2: 809610380
+      Mario Throw 3: 597799107
+      Mario Throw 4: 1477078439
+      Mario Throw 5: -2002664304
+      Mario Throw 6: 1224622836
+      Mario Throw 7: -705889549
+      Mario Walk 1: 1815555874
+      Mario Walk 2: -79044595
       Sprite_Mario_11: 1033924334
       Sprite_Mario_12: -2046211702
-      Sprite_Mario_13: 1432417164
-      Sprite_Mario_14: 11479705
       Sprite_Mario_15: -1197451803
-      Sprite_Mario_16: 2028708976
       Sprite_Mario_17: 682039345
       Sprite_Mario_18: 1239486230
       Sprite_Mario_19: -295941009
-      Sprite_Mario_2: -79044595
       Sprite_Mario_20: 1512766138
       Sprite_Mario_21: 2106471587
       Sprite_Mario_22: 1836625130
@@ -1424,7 +1432,6 @@ TextureImporter:
       Sprite_Mario_27: 2127599018
       Sprite_Mario_28: -1849007599
       Sprite_Mario_29: 2043524264
-      Sprite_Mario_3: -701477462
       Sprite_Mario_30: -1006361338
       Sprite_Mario_31: -2089657390
       Sprite_Mario_32: -1641647747
@@ -1437,15 +1444,10 @@ TextureImporter:
       Sprite_Mario_39: -2037365140
       Sprite_Mario_4: 874374882
       Sprite_Mario_40: -468219626
-      Sprite_Mario_41: -705889549
-      Sprite_Mario_42: 1224622836
       Sprite_Mario_43: 1238485002
       Sprite_Mario_44: 267804434
       Sprite_Mario_45: 1394116695
       Sprite_Mario_46: 562279293
-      Sprite_Mario_47: 597799107
-      Sprite_Mario_48: 1477078439
-      Sprite_Mario_49: -2002664304
       Sprite_Mario_5: -1074941248
       Sprite_Mario_50: 410178194
       Sprite_Mario_51: -1437577590
@@ -1457,10 +1459,8 @@ TextureImporter:
       Sprite_Mario_57: -2083529059
       Sprite_Mario_58: 357566949
       Sprite_Mario_59: 88616590
-      Sprite_Mario_6: 809610380
       Sprite_Mario_60: 2054542720
       Sprite_Mario_7: 511198140
-      Sprite_Mario_8: -974838984
       Sprite_Mario_9: 599476397
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
