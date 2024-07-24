@@ -87,7 +87,6 @@ public class PlayerController : MonoBehaviour
 
         anim.SetFloat("hInput", Mathf.Abs(hInput));
         anim.SetBool("isGrounded", isGrounded);
-        anim.SetTrigger("isAttacking");
     }
         void IsGrounded()
         {
