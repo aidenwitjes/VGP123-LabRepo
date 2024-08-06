@@ -57,29 +57,43 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Creat a small overlap collider to check if we are touching the ground
-        IsGrounded();
-        
-        //Grab horizontal axis - Check Project Settings > Input Manaer to see the inputs defined
+        //Grab horizontal axis - Check Project Settings > Input Manager to see the inputs defined
         float hInput = Input.GetAxis("Horizontal");
 
-        rb.velocity = new Vector2 (hInput * speed, rb.velocity.y);
+        AnimatorClipInfo[] curPlayingClips = anim.GetCurrentAnimatorClipInfo(0);
 
+        //Creat a small overlap collider to check if we are touching the ground
+        IsGrounded();
+
+        //Animation check for our physics
+        if (curPlayingClips.Length > 0)
+        {
+            if (curPlayingClips[0].clip.name == "BasicAttack")
+                rb.velocity = new Vector2(0, rb.velocity.y);
+            else
+            {
+                rb.velocity = new Vector2(hInput * speed, rb.velocity.y);
+            }
+        }
+
+        //Button Input Checks
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
 
         //Basic attack animation
-        if (Input.GetButtonDown("Fire1") && isGrounded)
+        if (Input.GetButtonDown("Fire1"))
         {
-            anim.SetTrigger("isBasicAttack");
-        }
-
-        //Jump attack animation
-        if (Input.GetButtonDown("Fire1") && !isGrounded)
-        {
-            anim.SetTrigger("isJumpAttack");
+            //Jump attack animation
+            if (!isGrounded && curPlayingClips[0].clip.name != "JumpAttack")
+            {
+                anim.SetTrigger("isJumpAttack");
+            }
+            else if (!curPlayingClips[0].clip.name.Contains("Attack"))
+            {
+                anim.SetTrigger("isBasicAttack");
+            }
         }
 
         //Sprite Flipping
@@ -88,7 +102,11 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("hInput", Mathf.Abs(hInput));
         anim.SetBool("isGrounded", isGrounded);
     }
-        void IsGrounded()
+    /// <summary>
+    /// This function is used to check if we are grounded. When we jump, we disable checking if we are grounded until our velocity reaches negative on the y-axis. 
+    ///This indicates that we are falling and we should start to check if we are grounded again. This is done to prevent us from flipping to grounded when we jump through a platform.
+    /// </summary>
+    void IsGrounded()
         {
             if (!isGrounded)
             {
@@ -100,4 +118,10 @@ public class PlayerController : MonoBehaviour
             else
                 isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, isGroundLayer);
         }
+
+    void IncreaseGravity()
+    {
+        rb.gravityScale = 10;
     }
+}
+
