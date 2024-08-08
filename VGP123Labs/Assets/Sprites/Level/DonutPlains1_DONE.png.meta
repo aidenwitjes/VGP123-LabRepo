@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: DonutPlains1_DONE_0
+      name: Level
       rect:
         serializedVersion: 2
         x: 0
@@ -151,6 +151,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: YoshiCoin
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 134
+        width: 17
+        height: 26
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca8a2f92dd67554459fb9f8b5ec69656
+      internalID: 1127808381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1Up
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 84
+        width: 17
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 783d651a5a88aa243a1f8c6582df7889
+      internalID: -1027932631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -162,8 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      1Up: -1027932631
       Coin: 1511880226
-      DonutPlains1_DONE_0: -597411888
+      Level: -597411888
+      YoshiCoin: 1127808381
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

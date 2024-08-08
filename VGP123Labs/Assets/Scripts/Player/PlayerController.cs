@@ -5,6 +5,98 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D), typeof(SpriteRenderer), typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
+    //Player gameplay variables
+    private Coroutine jumpForceChange;
+    private Coroutine speedChange;
+
+    public void PowerupValueChange(Pickup.PickupType type)
+    {
+        if (type == Pickup.PickupType.PowerupJump)
+            StartPowerupCoroutine(ref jumpForceChange, ref jumpForce, type);   
+
+        if (type == Pickup.PickupType.PowerupSpeed)
+            StartPowerupCoroutine(ref speedChange, ref speed, type);
+    }
+    public void StartPowerupCoroutine(ref Coroutine InCoroutine, ref float inVar, Pickup.PickupType type)
+    { 
+        if (InCoroutine != null)
+        {
+            StopCoroutine(InCoroutine);
+            InCoroutine = null;
+            inVar /= 2;
+        }
+
+        InCoroutine = StartCoroutine(PowerupChange(type));
+    }
+
+    IEnumerator PowerupChange(Pickup.PickupType type)
+    {
+        //This code runs before the wait
+        if (type == Pickup.PickupType.PowerupSpeed)
+            speed *= 2;
+
+        if (type == Pickup.PickupType.PowerupJump)
+            jumpForce *= 2;
+        
+        Debug.Log($"Jump force value is {jumpForce}, Speed value is {speed}");
+
+        yield return new WaitForSeconds(5.0f);
+
+        //This code runs after the wait
+        if (type == Pickup.PickupType.PowerupSpeed)
+        {
+            speed /= 2;
+            speedChange = null;
+        }
+        if (type == Pickup.PickupType.PowerupJump)
+        {
+            jumpForce /= 2;
+            jumpForceChange = null;
+        }
+
+        Debug.Log($"Jump force value is {jumpForce}, Speed value is {speed}");
+    }
+
+    //Private Lives variable (_ to indicate an internal variable)
+    private int _lives = 5;
+
+    //Public variable for getting and setting lives
+    public int lives
+    {
+        get
+        {
+            return _lives;
+        }
+        set
+        {
+            //All lives lost (zero counts as a life due to the check
+            if (value < 0)
+            {
+                //Game over function called here
+                //Return to prevent the rest of the function being called
+                return;
+            }
+
+            //Lost a life
+            if (value < _lives)
+            {
+                //Respawn function called here
+            }
+
+            //Cannot roll over the maximum amount of lives
+            if (value >= maxLives)
+            {
+                value = maxLives;
+            }
+                _lives = value;
+
+            Debug.Log($"Lives value on {gameObject.name} has changed to {lives}");
+        }
+    }
+
+    //Max lives possible
+    [SerializeField] private int maxLives = 10;
+        
     //Movement Variables
     [SerializeField, Range (1, 20)] private float speed = 5;
     [SerializeField, Range(1, 20)] private float jumpForce = 10;
