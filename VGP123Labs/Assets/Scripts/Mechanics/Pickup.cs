@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Pickup : MonoBehaviour
@@ -18,15 +16,14 @@ public class Pickup : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
-            PlayerController pc = collider.GetComponent<PlayerController>();
-            
             switch (type)
             {
                 case PickupType.Life:
-                    pc.lives++;
+                    GameManager.Instance.lives++;
                     break;
                 case PickupType.PowerupJump:
                 case PickupType.PowerupSpeed:
+                    PlayerController pc = collider.GetComponent<PlayerController>();
                     pc.PowerupValueChange(type);
                     break;
                 case PickupType.Score:

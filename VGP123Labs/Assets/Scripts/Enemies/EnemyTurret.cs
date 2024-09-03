@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyTurret : Enemy
@@ -21,9 +19,10 @@ public class EnemyTurret : Enemy
     // Update is called once per frame
     void Update()
     {
+        PlayerController pc = GameManager.Instance.PlayerInstance;
         AnimatorClipInfo[] curPlayingClips = anim.GetCurrentAnimatorClipInfo(0);
 
-        float distance = Vector2.Distance(GameObject.Find("Player").transform.position, transform.position);
+        float distance = Vector2.Distance(pc.transform.position, transform.position);
 
         if (curPlayingClips[0].clip.name.Contains("Idle"))
         {
@@ -34,7 +33,7 @@ public class EnemyTurret : Enemy
             }
         }
 
-        if (GameObject.Find("Player").transform.position.x < transform.position.x)
+        if (pc.transform.position.x < transform.position.x)
         {
             sr.flipX = true;
         }
