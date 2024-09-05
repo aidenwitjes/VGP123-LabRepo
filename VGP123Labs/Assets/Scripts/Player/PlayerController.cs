@@ -108,6 +108,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Prevents movement while paused
+        if (Time.timeScale == 0) return;
+
         //Grab horizontal axis - Check Project Settings > Input Manager to see the inputs defined
         float hInput = Input.GetAxis("Horizontal");
 

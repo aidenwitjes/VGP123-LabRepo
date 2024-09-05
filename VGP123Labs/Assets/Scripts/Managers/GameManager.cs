@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     //Private Lives variable (_ to indicate an internal variable)
     private int _lives = 3;
 
+    //Variable to track the pause state of the game
+    private bool isPaused = false;
+
     //Public variable for getting and setting lives
     public int lives
     {
@@ -69,41 +72,41 @@ public class GameManager : MonoBehaviour
         //If we are down here in execution - that means that the above if statement didn't run - which means we are a clone
         Destroy(gameObject);
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
         if (!currentMenuController) return;
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().name == "Level")
         {
-            if (currentMenuController.CurrentState == MenuController.MenuStates.Pause)
+            if (isPaused)
             {
-                currentMenuController.JumpBack();
+                UnpauseGame();
             }
             else
             {
-                currentMenuController.SetActiveState(MenuController.MenuStates.Pause);
+                PauseGame();
             }
         }
-        //if (Input.GetKeyDown(KeyCode.Escape))
-        //{
-        //    if (SceneManager.GetActiveScene().name == "Level" || SceneManager.GetActiveScene().name == "GameOver")
-        //    {
-        //        SceneManager.LoadScene("Title");
-        //        Debug.Log("Title Screen, press Esc to play again");
-        //    }
-        //    else
-        //        SceneManager.LoadScene("Level");
-        //}
     }
 
-   public void LoadScene(string sceneName)
+    public void PauseGame()
+    {
+        currentMenuController.SetActiveState(MenuController.MenuStates.Pause);
+        Time.timeScale = 0;
+        isPaused = true;
+        Debug.Log("Game Paused");
+    }
+
+    public void UnpauseGame()
+    {
+        currentMenuController.JumpBack();
+        Time.timeScale = 1;
+        isPaused = false;
+        Debug.Log("Game Unpaused");
+    }
+    public void LoadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
     }
@@ -113,7 +116,7 @@ public class GameManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "Level")
         {
             SceneManager.LoadScene("GameOver");
-            Debug.Log("Game Over, press Esc to go back to the title screen");
+            //Debug.Log("Game Over, press Esc to go back to the title screen");
         }
     }
 
