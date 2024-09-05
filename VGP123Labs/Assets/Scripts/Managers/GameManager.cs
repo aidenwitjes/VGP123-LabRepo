@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -5,6 +6,9 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
     public static GameManager Instance => instance;
+
+    public Action<int> OnLifeValueChanged;
+    //Public UnityEvent<int> OnLifeValueChanged;
 
     //Private Lives variable (_ to indicate an internal variable)
     private int _lives = 3;
@@ -37,6 +41,7 @@ public class GameManager : MonoBehaviour
                 value = maxLives;
             }
             _lives = value;
+            OnLifeValueChanged?.Invoke(_lives);
 
             Debug.Log($"Lives value on {gameObject.name} has changed to {lives}");
         }
@@ -49,6 +54,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public PlayerController PlayerInstance => playerInstance;
     private PlayerController playerInstance;
     private Transform currentCheckpoint;
+    private MenuController currentMenuController;
     private void Awake()
     {
         //If we are the first instance of the gamemanager object - ensure that our instance variable is filled and we cannot be destroyed when loading new levels.
@@ -71,16 +77,27 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!currentMenuController) return;
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (SceneManager.GetActiveScene().name == "Level" || SceneManager.GetActiveScene().name == "GameOver")
-            {
-                SceneManager.LoadScene("Title");
-                Debug.Log("Title Screen, press Esc to play again");
-            }
-            else
-                SceneManager.LoadScene("Level");
+            currentMenuController.SetActiveState(MenuController.MenuStates.Pause);
         }
+        //if (Input.GetKeyDown(KeyCode.Escape))
+        //{
+        //    if (SceneManager.GetActiveScene().name == "Level" || SceneManager.GetActiveScene().name == "GameOver")
+        //    {
+        //        SceneManager.LoadScene("Title");
+        //        Debug.Log("Title Screen, press Esc to play again");
+        //    }
+        //    else
+        //        SceneManager.LoadScene("Level");
+        //}
+    }
+
+   public void LoadScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
     }
 
     void GameOver()
@@ -106,5 +123,10 @@ public class GameManager : MonoBehaviour
     public void UpdateCheckpoint(Transform updatedCheckpoint)
     {
         currentCheckpoint = updatedCheckpoint;
+    }
+
+    public void SetMenuController(MenuController menuController)
+    {
+        currentMenuController = menuController;
     }
 }

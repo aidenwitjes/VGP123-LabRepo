@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public float minXClamp = 8.42f;
-    public float maxXClamp = 242.4f;
+    public float minXClamp = 6.35f;
+    public float maxXClamp = 244.2f;
 
     public float minYClamp = 0.0f;
     public float maxYClamp = 11.25f;
