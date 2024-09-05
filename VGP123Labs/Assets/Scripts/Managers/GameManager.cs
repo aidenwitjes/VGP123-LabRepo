@@ -116,7 +116,7 @@ public class GameManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "Level")
         {
             SceneManager.LoadScene("GameOver");
-            //Debug.Log("Game Over, press Esc to go back to the title screen");
+            Debug.Log("Out of lives. Game Over!");
         }
     }
 
