@@ -55,13 +55,12 @@ public class MenuController : MonoBehaviour
         if (currentState != null)
         {
             currentState.ExitState();
-            currentState.gameObject.SetActive(false);
         }
 
         currentState = menuDictionary[newState];
-        currentState.gameObject.SetActive(true);
         currentState.EnterState();
 
         if (!isJumpingBack) menuStack.Push(newState);
     }
+    public MenuStates CurrentState => currentState.state;
 }

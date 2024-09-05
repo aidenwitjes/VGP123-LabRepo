@@ -12,8 +12,14 @@ public class BaseMenu : MonoBehaviour
         context = ctx;
     }
 
-    public virtual void EnterState() { }
-    public virtual void ExitState() { }
+    public virtual void EnterState() 
+    { 
+        gameObject.SetActive(true);
+    }
+    public virtual void ExitState() 
+    {
+        gameObject.SetActive(false);
+    }
 
     public void JumpBack()
     {

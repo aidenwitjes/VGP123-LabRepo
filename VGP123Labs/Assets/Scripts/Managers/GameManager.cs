@@ -1,4 +1,5 @@
 using System;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -81,7 +82,14 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            currentMenuController.SetActiveState(MenuController.MenuStates.Pause);
+            if (currentMenuController.CurrentState == MenuController.MenuStates.Pause)
+            {
+                currentMenuController.JumpBack();
+            }
+            else
+            {
+                currentMenuController.SetActiveState(MenuController.MenuStates.Pause);
+            }
         }
         //if (Input.GetKeyDown(KeyCode.Escape))
         //{
