@@ -1,6 +1,7 @@
 using System;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -50,6 +51,9 @@ public class GameManager : MonoBehaviour
             Debug.Log($"Lives value on {gameObject.name} has changed to {lives}");
         }
     }
+
+    public AudioMixerGroup SFXGroup;
+    public AudioMixerGroup MusicGroup;
 
     //Max lives possible
     [SerializeField] private int maxLives = 10;
