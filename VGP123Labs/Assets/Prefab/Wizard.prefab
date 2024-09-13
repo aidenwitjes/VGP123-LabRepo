@@ -170,6 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 0
+  deathClip: {fileID: 8300000, guid: c904476302e7c8649abf8108acceb1fa, type: 3}
   projectileFireRate: 0
 --- !u!114 &5932343530838044127
 MonoBehaviour:

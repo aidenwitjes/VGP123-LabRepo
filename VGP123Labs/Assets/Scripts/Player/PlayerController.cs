@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -77,6 +78,7 @@ public class PlayerController : MonoBehaviour
     //Audio Clip References
     [SerializeField] private AudioClip jumpClip;
     [SerializeField] private AudioClip stompClip;
+    [SerializeField] private AudioClip deathClip;
 
     //AudioMixerChannel Reference
     public AudioMixerGroup SFXGroup;
@@ -208,5 +210,11 @@ public class PlayerController : MonoBehaviour
             audioSource.PlayOneShot(stompClip);
         }
     }
+
+    public void MarioDeathAudio()
+    {
+        audioSource.PlayOneShot(deathClip);
+    }
 }
+
 

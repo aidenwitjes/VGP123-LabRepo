@@ -174,6 +174,7 @@ MonoBehaviour:
     m_Bits: 8
   jumpClip: {fileID: 8300000, guid: 0b2e272cc25bbdb468f66a17f3b041d1, type: 3}
   stompClip: {fileID: 8300000, guid: 4f2f9f0a7d581e544b48fe19fb26dac9, type: 3}
+  deathClip: {fileID: 8300000, guid: 96a583be3d7b1054e85440ec86a9de9a, type: 3}
   SFXGroup: {fileID: 7202929891825784265, guid: 3164610c83fd91a42a028e157e80f17c, type: 2}
 --- !u!61 &929595469134738521
 BoxCollider2D:

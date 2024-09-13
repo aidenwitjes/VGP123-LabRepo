@@ -14,6 +14,8 @@ public class Enemy : MonoBehaviour
     protected int health;
     [SerializeField] protected int maxHealth;
 
+    //Audio for enemy deaths
+    [SerializeField] protected AudioClip deathClip;
 
     // Start is called before the first frame update
     public virtual void Start()
@@ -35,6 +37,11 @@ public class Enemy : MonoBehaviour
 
         if (health <= 0)
         {
+            if (deathClip != null)
+            {
+                audioSource.PlayOneShot(deathClip);
+            }
+
             anim.SetTrigger("Death");
 
             if (transform.parent != null)

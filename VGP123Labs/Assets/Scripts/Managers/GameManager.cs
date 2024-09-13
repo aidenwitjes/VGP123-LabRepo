@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(AudioSource))]
 public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
@@ -58,7 +59,9 @@ public class GameManager : MonoBehaviour
     //Max lives possible
     [SerializeField] private int maxLives = 10;
     [SerializeField] private PlayerController playerPrefab;
+    [SerializeField] private AudioClip pauseClip;
 
+    AudioSource audioSource;
     [HideInInspector] public PlayerController PlayerInstance => playerInstance;
     private PlayerController playerInstance;
     private Transform currentCheckpoint;
@@ -80,6 +83,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        audioSource = GetComponent<AudioSource>();
+
         if (!currentMenuController) return;
 
         if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().name == "Level")
@@ -92,6 +97,7 @@ public class GameManager : MonoBehaviour
             {
                 PauseGame();
             }
+            audioSource.PlayOneShot(pauseClip);
         }
     }
 
@@ -126,6 +132,7 @@ public class GameManager : MonoBehaviour
 
     void Respawn()
     {
+        playerInstance.MarioDeathAudio();
         playerInstance.transform.position = currentCheckpoint.position;
     }
 

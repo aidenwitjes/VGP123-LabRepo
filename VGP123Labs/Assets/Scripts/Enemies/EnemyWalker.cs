@@ -22,6 +22,7 @@ public class EnemyWalker : Enemy
         //do something to trigger our squash animation
         if (damage == 9999)
         {
+            audioSource.PlayOneShot(deathClip);
             anim.SetTrigger("Squish");
             Destroy(transform.parent.gameObject, 2);
             return;
@@ -38,6 +39,10 @@ public class EnemyWalker : Enemy
         if (curPlayingClips[0].clip.name.Contains("Walk"))
         {
             rb.velocity = (sr.flipX) ? new Vector2(-xVel, rb.velocity.y) : new Vector2(xVel, rb.velocity.y);
+        }
+        else if (curPlayingClips[0].clip.name.Contains("Death") || curPlayingClips[0].clip.name.Contains("Squish"))
+        {
+            rb.velocity = new Vector2(0, 0);
         }
     }
 
